@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    
+<head>
+    <meta charset="utf-8">
+    <title>AUM Compueter Science Department</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="taApp.css">
+</head>
+    
+<body>
+    <!----------Header--------->
+    <header>
+        <img id="logo" src=images/aum_logo_blk.png>
+        <h1 class="header1">Auburn University Montgomery</h1>
+        <h2 class="header2">Computer Science Department</h2>
+    </header>
+    
+    <!---------TopNavigationBar--------->
+    <nav id="top_nav">
+        <ul>
+            <li><a href="index.html" class="current">Home</a></li>
+            <li><a href="programDescript.html">CS Program Description</a></li>
+            <li><a href="taApp.html">TA Application</a></li>
+            <li><a href="GPACalc.html">GPA Calculator</a></li>
+        </ul>
+    </nav>
+    
+    <!--------RightSide-------->
+    <aside>
+        <nav id="vert_nav">
+            <ul>
+                <li><a href="#">Important News and Updates</a></li>
+                <li><a href="#">Upcoming Events</a></li>
+                <li><a href="#">Concentrations</a></li>
+                <li><a href="#">Advising</a></li>
+                <li><a href="#">Faculty</a></li>
+            </ul>
+        </nav>
+    </aside>
+    
+    <!---------Main----------->
+    <main>
+        <h1 class="pheader1">Welcome!</h1>
+        <p class="p1">Thank you for your interest in becoming a teaching assistant at Auburn University at Montgomery. We are always looking to for quality students to lend there skill sets and help to our professors. Please fill out the following form to submit your teaching assistant application!</p>
+    </main>
+    
+    <!---------Form---------->
+    <form name="taApp" action="survey_data.html" method="get">
+        <h2 class="f_header2">Teaching Assistant Application</h2>
+        <label for="firstname">First Name:</label>
+        <input type="text" name="fristname" id="firstname" required><br>
+        <label for="lastname">Last Name:</label>
+        <input type="text" name="lastname" id="lastname" required><br>
+        <label for="middleinitial">Middle Initial:</label>
+        <input type="text" name="middleinitial" id="middleinitial" required><br>
+        <label for="ID">ID:</label>
+        <input type="Text" name="ID" id="ID" required><br>
+        <label for="Gender">Gender:</label>
+        <input type="text" name="Gender" id="Gender" required><br>
+        <label for="submission_date">Submission Date:</label>
+        <input type="number" name="submission_date" id="submission_date" required><br>
+        <label for="comments">Please enter any comments you would like to leave about your qualifications.</label>
+        <input type="text" name="comments" id="comments"><br>
+        
+        <h2 class="f_header2">Thank You for filling out your Teaching Assistant Application!</h2>
+        <input type="submit" name="button" id="button" value="Submit">
+        <input type="reset" name="reset" id="reset"> 
+    </form>
+    
+    <!---------Footer--------->
+    <footer>
+        <p>Designed by Evan Turner</p>
+        <p> &#169; Evan Turner 2020</p>
+        <p> Email: eturner7@aum.edu</p>
+    </footer>
+</body>
+</html>

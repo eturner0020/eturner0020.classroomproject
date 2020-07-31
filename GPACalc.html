@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    
+<head>
+    <meta charset="utf-8">
+    <title>AUM Compueter Science Department</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link rel="stylesheet" href="GPACalc.css">
+</head>
+    
+<body>
+    <!----------Header--------->
+    <header>
+        <img id="logo" src=images/aum_logo_blk.png>
+        <h1 class="header1">Auburn University Montgomery</h1>
+        <h2 class="header2">Computer Science Department</h2>
+    </header>
+    
+    <!---------TopNavigationBar--------->
+    <nav id="top_nav">
+        <ul>
+            <li><a href="index.html" class="current">Home</a></li>
+            <li><a href="programDescript.html">CS Program Description</a></li>
+            <li><a href="taApp.html">TA Application</a></li>
+            <li><a href="GPACalc.html">GPA Calculator</a></li>
+        </ul>
+    </nav>
+    
+    <!--------RightSide-------->
+    <aside>
+        <nav id="vert_nav">
+            <ul>
+                <li><a href="#">Important News and Updates</a></li>
+                <li><a href="#">Upcoming Events</a></li>
+                <li><a href="#">Concentrations</a></li>
+                <li><a href="#">Advising</a></li>
+                <li><a href="#">Faculty</a></li>
+            </ul>
+        </nav>
+    </aside>
+    
+    <!---------Main----------->
+    <main>
+        <h1 class="pheader1">Welcome!</h1>
+        <p class="p1">Here is where you can calculate your current GPA. This can help you keep track of where you are for academic, financial aid, and personal reasons.</p>
+        
+        <center>
+            <form name="GPACalcForm">
+                <table border=5 bgcolor=#C0C0C0 cellpadding="5" cellspacing="2">
+                <th></th>
+                <th>Grade</th>
+                <th>Credits</th>
+                <tr>
+                    <td>Class 1</td>
+                    <td>
+                        <input type="text" size=5 name="GR1" align=top maxlength=5>
+                    </td>
+                    <td>
+                        <input type="text" size=5 name="CR1" align=top maxlength=5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Class 2</td>
+                    <td>
+                        <input type="text" size=5 name="GR2" align=top maxlength=5>
+                    </td>
+                    <td>
+                        <input type="text" size=5 name="CR2" align=top maxlength=5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Class 3</td>
+                    <td>
+                        <input type="text" size=5 name="GR3" align=top maxlength=5>
+                    </td>
+                    <td>
+                        <input type="text" size=5 name="CR3" align=top maxlength=5>
+                    </td>
+                </tr>
+                <tr>
+                <td>Class 4</td>
+                    <td>
+                        <input type="text" size=5 name="GR4" align=top maxlength=5>
+                    </td>
+                    <td>
+                        <input type="text" size=5 name="CR4" align=top maxlength=5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Class 5</td>
+                    <td> 
+                        <input type="text" size=5 name="GR5" align=top maxlength=5>
+                    </td>
+                    <td>
+                        <input type="text" size=5 name="CR5" align=top maxlength=5>
+                    </td>
+                </tr>
+                <tr align=center>
+                    <td colspan=3><input type="button" value="Calculate" name="CalcButton" OnClick="gpacalc()"></td>
+                </tr>
+            </table>
+        </form>
+    </center><br>
+
+        <script language="JavaScript">
+            function gpacalc()
+            {
+                //define valid grades and their values
+                var gr = new Array(5); 
+                var cr = new Array(5);
+                var ingr = new Array(5);
+                var incr = new Array(5);
+
+                // define valid grades and their values
+                var grcount = 5; 
+                gr[0] = "A"; 
+                cr[0] = 4; 
+                gr[1] = "B";
+                cr[1] = 3;
+                gr[2] = "C";
+                cr[2] = 2;
+                gr[3] = "D";
+                cr[3] = 1;
+                gr[4] = "F";
+                cr[4] = 0;
+                
+                // retrieve user input
+                ingr[0] = document.GPACalcForm.GR1.value;
+                ingr[1] = document.GPACalcForm.GR2.value;
+                ingr[2] = document.GPACalcForm.GR3.value;
+                ingr[3] = document.GPACalcForm.GR4.value;
+                ingr[4] = document.GPACalcForm.GR5.value;
+                incr[0] = document.GPACalcForm.CR1.value;
+                incr[1] = document.GPACalcForm.CR2.value;
+                incr[2] = document.GPACalcForm.CR3.value;
+                incr[3] = document.GPACalcForm.CR4.value;
+                incr[4] = document.GPACalcForm.CR5.value;
+
+                // Calculate GPA
+                var allgr =0;
+                var allcr = 0;
+                var gpa = 0;
+                for (var x = 0; x < 5 + 3; x++)
+                {
+                    if (ingr[x] == "") break;
+                    if (isNaN(parseInt(incr[x])))
+                    {
+                        alert("Error- You did not enter the number of credits the class is worth. Please enter a numeric value for how many total credit hours a class is worth.");
+                        return 0;
+                    }
+                    
+                    var validgrcheck = 0;
+                    for (var xx = 0; xx < grcount; xx++)
+                    {
+                        if (ingr[x] == gr[xx])
+                        {
+                            allgr = allgr + (parseInt(incr[x],10) * cr[xx]);
+                            allcr = allcr + parseInt(incr[x],10);
+                            validgrcheck = 1;
+                            break;
+                        }
+                    }
+                    if (validgrcheck == 0)
+                    {
+                        alert("Error- Could not recognize the grade entered for Class " + eval(x +  1) + ". Please use standard college grades in the form of A B C D F.");
+                        return 0;
+                    }
+                }
+
+                // this if-check prevents a divide by zero error
+                if (allcr == 0)
+                {
+                    alert("Error- You did not enter any credit hour values. GPA = N/A");
+                    return 0;
+                }
+
+                gpa = allgr / allcr;
+
+                alert("GPA =  " + eval(gpa));
+
+                return 0;
+            }
+        </script>
+
+    </main>
+    
+    <!---------Footer--------->
+    <footer>
+        <p>Designed by Evan Turner</p>
+        <p> &#169; Evan Turner 2020</p>
+        <p> Email: eturner7@aum.edu</p>
+    </footer>
+</body>
+</html>
